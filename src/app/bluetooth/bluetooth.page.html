@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bluetooth</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="startScan()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="device-section">
+    <ion-list-header>
+      <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+      <ion-label>Available Devices</ion-label>
+    </ion-list-header>
+    <ion-list class="device-list">
+      <ion-item *ngFor="let device of availableDevices" (click)="connectToDevice(device.device.deviceId)" button>
+        <ion-label>
+          <h2>{{ device.device.name || 'Unknown Device' }}</h2>
+          <p>ID: {{ device.device.deviceId }}</p>
+          <p>Signal: {{ device.rssi }} dBm</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="device-section">
+    <ion-list-header>
+      <ion-icon name="link-outline" slot="start"></ion-icon>
+      <ion-label>Paired Devices</ion-label>
+    </ion-list-header>
+    <ion-list class="device-list">
+      <ion-item *ngFor="let device of connectedDevice" (click)="disconnectDevice(device.device.deviceId)" button>
+        <ion-label>
+          <h2>{{ device.device.name || 'Unknown Device' }}</h2>
+          <p>ID: {{ device.device.deviceId }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-spinner *ngIf="isScanning" class="spinner-style"></ion-spinner>
+</ion-content>

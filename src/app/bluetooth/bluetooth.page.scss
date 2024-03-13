@@ -1,0 +1,21 @@
+.device-section {
+  height: calc(50% - 56px); /* 56px je približná výška ion-list-header */
+  display: flex;
+  flex-direction: column;
+}
+
+ion-list-header {
+  flex: 0 0 auto;
+}
+
+.device-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.spinner-style {
+  position: absolute;
+  bottom: 10px; /* Zobrazí spinner na spodku stránky */
+  left: 50%;
+  transform: translateX(-50%);
+}

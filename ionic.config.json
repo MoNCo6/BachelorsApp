@@ -1,0 +1,7 @@
+{
+  "name": "BachelorApplication",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
