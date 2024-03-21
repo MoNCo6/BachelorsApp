@@ -99,8 +99,13 @@ export class BluetoothPage implements OnInit {
     }
   }
 
-  async disconnectDevice() {
-
+  async disconnectDevice(deviceId: string) {
+    try {
+      await BleClient.disconnect(deviceId);
+      console.log('Device disconnected successfully');
+    } catch (error) {
+      console.error('Failed to disconnect the device', error);
+    }
   }
 
 
